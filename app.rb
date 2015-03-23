@@ -9,8 +9,9 @@ require 'sinatra/activerecord'
 require 'activerecord'
 require 'rake'
 
-db_options = {adapter: 'sqlite3', database: ',/development'}
-ActiveRecord::Base.establish_connection(db_options)
+
+dbconfig = YAML::load(File.open('database.yml'))
+ActiveRecord::Base.establish_connection(dbconfig)
 
 class DreamColor < ActiveRecord::Base
 end

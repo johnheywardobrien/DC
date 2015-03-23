@@ -1,7 +1,23 @@
 # http://tutorials.jumpstartlab.com/projects/idea_box.html
-require './idea'
+# http://tutorials.jumpstartlab.com/topics/sinatra_with_active_record.html
 require 'bundler'
 Bundler.require
+
+require './idea'
+require 'sqlite3'
+require 'sinatra/activerecord'
+require 'activerecord'
+require 'rake'
+
+db_options = {adapter: 'sqlite3', database: ',/development'}
+ActiveRecord::Base.establish_connection(db_options)
+
+class DreamColor < ActiveRecord::Base
+end
+
+
+
+
 
 class IdeaBoxApp < Sinatra::Base
   set :method_override, true
@@ -44,3 +60,4 @@ class IdeaBoxApp < Sinatra::Base
 
 
 end
+

@@ -1,6 +1,9 @@
 ---
 ideas:
-- :title: gift for amber
-  :description: puppy dog
-- :title: Rock climbing
-  :description: find a rock
+- :title: Dream color calibration
+  :description: "</br>\r\nHave this become the place where all calibrations are store\r\n</br>\r\n1.
+    Backend: Getting all fields to input to DB\r\n</br>\r\n2. Views: Ask for tag number
+    or display all. Display inputs for new calibration. Put all previous calibrations
+    for that monitor underneath \r\n</br>\r\n3. DB: SQlite3? Will probably need to
+    start with a YAML setup and then move to a true DB schema\r\n</br>\r\n4. Deploy.
+    Is this something could live on the network by any chance?"

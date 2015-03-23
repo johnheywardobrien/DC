@@ -1,11 +1,31 @@
 <html>
   <head>
-    <title>IdeaBox</title>
+    <title>DC Calibrations</title>
   </head>
   <body>
-    <h1>IdeaBox</h1>
+    <h1>DreamColor Calibrations</h1>
+    <form action='/new_calibration' method='POST'>
+      <h3>Input New Calibration:</h3>
+        <input type='text' name='lum_val' placeholder="Luminance"/>
+        <input type='text' name='x_val' placeholder="X Value"/>
+        <input type='text' name='y_val' placeholder="Y Value"/>
+        <input type='text' name='cal_attempts' placeholder="Attempts"/>
+        <input type='text' name='date' placeholder="Date"/><br/>
+        <br/>
+        <input type='submit'/>
+    </form>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <form action='/' method='POST'>
-      <h3>Your Idea:</h3>
+      <h3>Input Idea:</h3>
       <input type='text' name='idea_title'/><br/>
       <textarea name='idea_description'></textarea><br/>
       <input type='submit'/>
@@ -16,7 +36,7 @@
     <ul>
       <% ideas.each_with_index do |idea, id| %>
         <li>
-          <%= idea.title %><br/>
+          <b><%= idea.title %></b><br/>
           <%= idea.description %>
           <a href="/<%= id %>/edit">Edit</a>
           <form action="/<%= id %>" method="POST">

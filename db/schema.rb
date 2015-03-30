@@ -11,6 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150322234443) do
+ActiveRecord::Schema.define(version: 20150325214314) do
+
+  create_table "dream_colors", force: :cascade do |t|
+    t.string "tag"
+  end
 
 end

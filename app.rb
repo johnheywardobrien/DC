@@ -6,15 +6,15 @@ Bundler.require
 require './idea'
 require 'sqlite3'
 require 'sinatra/activerecord'
-require 'activerecord'
+require 'active_record'
 require 'rake'
 
 
-dbconfig = YAML::load(File.open('database.yml'))
-ActiveRecord::Base.establish_connection(dbconfig)
+# dbconfig = YAML::load(File.open('database.yml'))
+# ActiveRecord::Base.establish_connection(dbconfig)
 
-class DreamColor < ActiveRecord::Base
-end
+# class DreamColor < ActiveRecord::Base
+# end
 
 
 

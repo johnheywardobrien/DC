@@ -7,3 +7,4 @@ gem 'shotgun'
 gem 'activerecord'
 gem 'sqlite3'
 gem 'sinatra-activerecord'
+

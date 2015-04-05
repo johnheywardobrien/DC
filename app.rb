@@ -13,8 +13,22 @@ require 'rake'
 # dbconfig = YAML::load(File.open('database.yml'))
 # ActiveRecord::Base.establish_connection(dbconfig)
 
-# class DreamColor < ActiveRecord::Base
-# end
+class DreamColor < ActiveRecord::Base
+end
+
+
+class AddColumnstoDcreamColors < ActiveRecord::Migration
+  def change
+    add_column :dream_colors, :luminance, :string
+  end
+end
+
+
+
+
+
+
+
 
 
 

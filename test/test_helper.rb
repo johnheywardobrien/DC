@@ -7,4 +7,4 @@ require 'active_record'
 db_options = {adapter: 'sqlite3', database: 'dreamcolor_test'}
 ActiveRecord::Base.establish_connection(db_options)
 
-require 'db/schema'
+require 'db/schema'   

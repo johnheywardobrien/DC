@@ -1,7 +1,7 @@
 ---
 ideas:
 - :title: Dream color calibration
-  :description: "</br>\r\nHave this become the place where all calibrations are store\r\n</br>\r\n1.
+  :description: "</br>\r\nHave this become the place where all calibrations are stored\r\n</br>\r\n1.
     Backend: Getting all fields to input to DB\r\n</br>\r\n2. Views: Ask for tag number
     or display all. Display inputs for new calibration. Put all previous calibrations
     for that monitor underneath \r\n</br>\r\n3. DB: SQlite3? Will probably need to

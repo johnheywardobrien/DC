@@ -1,5 +1,5 @@
-class Dream < ActiveRecord::Migration
-  create_table :dream_color_cal do |t|
+class DcCals < ActiveRecord::Migration
+  create_table :dc_cals do |t|
     t.column :tag, :string
     t.column :luminance, :string
     t.column :x_value, :string
@@ -9,3 +9,4 @@ class Dream < ActiveRecord::Migration
     t.column :green, :string
   end
 end
+

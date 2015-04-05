@@ -1,5 +1,6 @@
 # http://tutorials.jumpstartlab.com/projects/idea_box.html
 # http://tutorials.jumpstartlab.com/topics/sinatra_with_active_record.html
+# http://nycda.com/blog/integrating-activerecord-into-a-sinatra-project/
 require 'bundler'
 Bundler.require
 
@@ -13,31 +14,21 @@ require 'rake'
 # dbconfig = YAML::load(File.open('database.yml'))
 # ActiveRecord::Base.establish_connection(dbconfig)
 
-class DreamColor < ActiveRecord::Base
-end
+require './lib/models/dream_color'
 
-
-class AddColumnstoDcreamColors < ActiveRecord::Migration
-  def change
-    add_column :dream_colors, :luminance, :string
-  end
-end
-
-
-
-
-
-
-
-
-
-
-
+# class DcCalERB < Sinatra::Base
+#   get '/' do
+#     @dccal = DcCal.find(1)
+    
+#     erb :dccal
+#   end
+# end
 
 class IdeaBoxApp < Sinatra::Base
   set :method_override, true
 
   get '/' do
+    @dccal = DcCal.find(1)
     erb :index, locals: {ideas: Idea.all}
   end
   

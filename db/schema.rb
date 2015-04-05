@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150405015640) do
+ActiveRecord::Schema.define(version: 20150405033421) do
+
+  create_table "dc_cals", force: :cascade do |t|
+    t.string "tag"
+    t.string "luminance"
+    t.string "x_value"
+    t.string "y_value"
+    t.string "attempts"
+    t.string "date"
+    t.string "green"
+  end
 
   create_table "dream_color_cal", force: :cascade do |t|
     t.string "tag"

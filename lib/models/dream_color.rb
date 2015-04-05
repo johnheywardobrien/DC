@@ -10,5 +10,6 @@ require 'active_record'
 require 'rake'
 
 
-class DreamColor < ActiveRecord::Base
+class DcCal < ActiveRecord::Base
 end
+

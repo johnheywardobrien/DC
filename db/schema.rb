@@ -11,29 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150405033421) do
+ActiveRecord::Schema.define(version: 20150410225000) do
 
-  create_table "dc_cals", force: :cascade do |t|
-    t.string "tag"
-    t.string "luminance"
-    t.string "x_value"
-    t.string "y_value"
-    t.string "attempts"
-    t.string "date"
-    t.string "green"
+  create_table "calibrations", force: :cascade do |t|
+    t.string   "x_value"
+    t.string   "y_value"
+    t.string   "attempts"
+    t.string   "green"
+    t.string   "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "monitor_id"
   end
 
-  create_table "dream_color_cal", force: :cascade do |t|
-    t.string "tag"
-    t.string "luminance"
-    t.string "x_value"
-    t.string "y_value"
-    t.string "attempts"
-    t.string "date"
-    t.string "green"
+  create_table "monitors", force: :cascade do |t|
+    t.string   "tag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
-
-# Could not dump table "dream_colors" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
 
 end

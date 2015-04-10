@@ -15,6 +15,8 @@ App for logging of DreamColor calibrations
   https://youtu.be/o0SzhgYntK8?t=39m38s
   https://www.youtube.com/watch?v=jDXsEzOHb2M
   
+  http://irc.lc/freenode/ruby
+  
 # Quotes
   
   controllers move data to a view and can pass data to a model

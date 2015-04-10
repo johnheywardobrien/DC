@@ -1,12 +1,12 @@
 require './test/test_helper'
-require 'models/dream_color'
+require 'models/dc_cal'
 
-class DreamColor
+class DcCal
   
   class UnitTests < MiniTest::Test
 
     def test_it_exists
-      dream_color = DreamColor.new(:tag => '000123')
+      dream_color = DcCal.new(:tag => '000123')
       assert_equal '000123', dream_color.tag
     end
   

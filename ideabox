@@ -7,3 +7,7 @@ ideas:
     for that monitor underneath \r\n</br>\r\n3. DB: SQlite3? Will probably need to
     start with a YAML setup and then move to a true DB schema\r\n</br>\r\n4. Deploy.
     Is this something could live on the network by any chance?"
+- :title: Add lots of animated gif of foods
+  :description: yes very good
+- :title: Move ideabox to separate controller
+  :description: "clear up main app.rb and require controllers\r\n"

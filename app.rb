@@ -1,6 +1,4 @@
-# http://tutorials.jumpstartlab.com/projects/idea_box.html
-# http://tutorials.jumpstartlab.com/topics/sinatra_with_active_record.html
-# http://nycda.com/blog/integrating-activerecord-into-a-sinatra-project/
+
 require 'bundler'
 Bundler.require
 
@@ -14,7 +12,8 @@ require 'rake'
 # dbconfig = YAML::load(File.open('database.yml'))
 # ActiveRecord::Base.establish_connection(dbconfig)
 
-require './lib/models/dream_color'
+require './lib/models/dc_cal'
+require './lib/models/dc_cal_create'
 
 # class DcCalERB < Sinatra::Base
 #   get '/' do

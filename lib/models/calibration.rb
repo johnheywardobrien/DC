@@ -9,4 +9,5 @@ require 'rake'
 
 
 class Calibration < ActiveRecord::Base
+  belongs_to :monitors     # foreign key - monitor_id
 end

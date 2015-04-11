@@ -1,4 +1,4 @@
-class Monitors < ActiveRecord::Migration
+class CreateMonitors < ActiveRecord::Migration
   def change
     create_table :monitors do |t|
       t.string :tag

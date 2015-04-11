@@ -1,4 +1,4 @@
-class Calibrations < ActiveRecord::Migration
+class CreateCalibrations < ActiveRecord::Migration
   def change
     create_table :calibrations do |t|
       t.string :x_value
@@ -10,7 +10,7 @@ class Calibrations < ActiveRecord::Migration
       t.timestamps null: false
       
       t.integer :monitor_id
-
+ 
     end
   end
 end

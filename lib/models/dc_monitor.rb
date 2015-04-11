@@ -7,9 +7,10 @@ require 'sinatra/activerecord'
 require 'active_record'
 require 'rake'
 
-class Monitor < ActiveRecord::Base
+
+# puts Monitor.superclass.inspect
+
+class DCMonitor < ActiveRecord::Base
+    has_many :calibrations
 end
-
-
-
 

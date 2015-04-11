@@ -16,7 +16,8 @@ App for logging of DreamColor calibrations
   https://www.youtube.com/watch?v=jDXsEzOHb2M
   
   http://irc.lc/freenode/ruby
-  
+    #dudedudeman
 # Quotes
   
   controllers move data to a view and can pass data to a model
+  a model is a noun not a verb, it is a thing not an action

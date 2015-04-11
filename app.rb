@@ -1,4 +1,3 @@
-
 require 'bundler'
 Bundler.require
 
@@ -9,10 +8,8 @@ require 'active_record'
 require 'rake'
 
 
-# dbconfig = YAML::load(File.open('database.yml'))
-# ActiveRecord::Base.establish_connection(dbconfig)
 
-require './lib/models/monitor'
-require './lib/models/ideabox'
+require './lib/models/dc_monitor'
+require './lib/models/calibration'
 
 

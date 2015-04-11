@@ -1,5 +1,6 @@
 require 'yaml/store'
 
+
 class Idea
   attr_reader :title, :description
 

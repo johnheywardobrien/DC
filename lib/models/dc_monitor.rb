@@ -8,7 +8,9 @@ require 'active_record'
 require 'rake'
 
 
-# puts Monitor.superclass.inspect
+# foo.<tab> lists all methods available 
+
+
 
 class DCMonitor < ActiveRecord::Base
     has_many :calibrations

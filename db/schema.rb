@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411042623) do
+ActiveRecord::Schema.define(version: 20150411060114) do
 
   create_table "calibrations", force: :cascade do |t|
     t.string   "x_value"
@@ -22,9 +22,10 @@ ActiveRecord::Schema.define(version: 20150411042623) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "monitor_id"
+    t.string   "luminance"
   end
 
-  create_table "monitors", force: :cascade do |t|
+  create_table "dc_monitors", force: :cascade do |t|
     t.string   "tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

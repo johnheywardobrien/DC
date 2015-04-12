@@ -10,6 +10,8 @@ require 'rake'
 
 # foo.<tab> lists all methods available 
 
+# .tag
+
 
 
 class DCMonitor < ActiveRecord::Base

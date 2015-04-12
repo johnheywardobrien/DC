@@ -19,7 +19,7 @@ class IdeaBoxApp < Sinatra::Base
   set :method_override, true
 
   get '/' do
-    @dc_monitor = DCMonitor.find(2)
+    # @dc_monitor = DCMonitor.find(2)
     erb :index, locals: {ideas: Idea.all}
   end
   

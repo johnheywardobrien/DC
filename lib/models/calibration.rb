@@ -15,6 +15,7 @@ require 'rake'
 # .luminance
 
 class Calibration < ActiveRecord::Base
-  belongs_to :monitors     # foreign key - monitor_id
+  belongs_to :dc_monitors     # foreign key - monitor_id
 end
+
 

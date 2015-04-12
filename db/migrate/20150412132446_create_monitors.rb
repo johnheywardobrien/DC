@@ -1,6 +1,6 @@
 class CreateMonitors < ActiveRecord::Migration
   def change
-    create_table :monitors do |t|
+    create_table :dc_monitors do |t|
       t.string :tag
       
       

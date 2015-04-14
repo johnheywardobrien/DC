@@ -11,24 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412132446) do
+ActiveRecord::Schema.define(version: 20150413212103) do
 
   create_table "calibrations", force: :cascade do |t|
+    t.integer  "dream_color_monitor_id"
     t.string   "luminance"
     t.string   "x_value"
     t.string   "y_value"
     t.string   "attempts"
     t.string   "green"
     t.string   "date"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "dc_monitors_id"
-    t.integer  "monitor_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_index "calibrations", ["dc_monitors_id"], name: "index_calibrations_on_dc_monitors_id"
-
-  create_table "dc_monitors", force: :cascade do |t|
+  create_table "dream_color_monitors", force: :cascade do |t|
     t.string   "tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -1,4 +1,3 @@
-puts Dir.pwd
 require 'bundler'
 Bundler.require
 
@@ -15,7 +14,10 @@ require './lib/models/calibration'
 require './lib/models/idea'
 
 
+
+
 class IdeaBoxApp < Sinatra::Base
+  
   set :method_override, true
 
   get '/' do
@@ -54,6 +56,12 @@ class IdeaBoxApp < Sinatra::Base
     Idea.update(id.to_i, data)
     redirect '/'
   end
-
-
+  
+  # Monitors
+  
+  
+  # Calibrations
+  
+  
+  
 end

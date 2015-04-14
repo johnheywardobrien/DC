@@ -1,21 +1,3 @@
-require 'bundler'
-Bundler.require
-
-# require './idea'
-require 'sqlite3'
-require 'sinatra/activerecord'
-require 'active_record'
-require 'rake'
-
-# .x_value
-# .y_value
-# .attempts
-# .date
-# .green
-# .luminance
-
 class Calibration < ActiveRecord::Base
-  belongs_to :dc_monitors     # foreign key - monitor_id
+  belongs_to :dream_color_monitor    # foreign key - dc_monitor_id
 end
-
-

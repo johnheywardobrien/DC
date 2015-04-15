@@ -8,7 +8,7 @@ require 'rake'
 
 
 require './app'
-require './lib/models/dc_monitor'
+require './lib/models/dream_color_monitor'
 require './lib/models/calibration'
 
 run IdeaBoxApp

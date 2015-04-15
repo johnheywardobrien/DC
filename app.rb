@@ -8,8 +8,8 @@ require 'active_record'
 require 'rake'
 
 
-require './lib/models/ideabox'
-require './lib/models/dc_monitor'
+# require './lib/models/ideabox'
+require './lib/models/dream_color_monitor'
 require './lib/models/calibration'
 require './lib/models/idea'
 
@@ -21,10 +21,10 @@ class IdeaBoxApp < Sinatra::Base
   set :method_override, true
 
   get '/' do
-    # @dc_monitor = DCMonitor.find(2)
+    @dc_monitor = DreamColorMonitor.find(1)
     erb :index, locals: {ideas: Idea.all}
   end
-  
+
   not_found do
     erb :error
   end

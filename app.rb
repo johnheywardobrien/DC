@@ -18,38 +18,40 @@ class DreamColorApp < Sinatra::Base
 
   set :method_override, true
   
-  # landing page
+  # this currently works
   get '/' do
-    # goal is to pass in all of the dream colors
-    @monitors = DreamColorMonitor.find(1)
-    
     erb :index_2
   end
+  
+  get '/monitors' do
+    # pass in all Dream Colors
+    @monitors = DreamColorMonitor.all 
+    
+    erb :monitors
+  end    
   
   not_found do
     erb :error
   end
   
-  # monitors 
-  # Class.find_by(tag: params[’tag’])
+  # Monitors
   
   get '/monitors/:tag' do
     # display individual tag
-    m = DreamColorMonitor.(params[:tag])
+    m = DreamColorMonitor.find_by(tag: params['tag'])
     @tag = m.calibrations { |calibrations| puts calibrations}
     
     erb :monitor_tag
   end
   
-
-
+  
   # calibrations
   
   get '/monitors/:tag/calibrations' do
-    @tag = params[:tag]
-    @calibrations = DreamColorMonitor.first.calibrations
     
-    erb :monitor_tag
+    erb params[:tag].to_sym
+    
+    erb :monitors_tag
   end
   
   post 'monitors/:tag/calibrations' do

@@ -8,7 +8,6 @@ require 'active_record'
 require 'rake'
 
 
-# require './lib/models/ideabox'
 require './lib/models/dream_color_monitor'
 require './lib/models/calibration'
 require './lib/models/idea'
@@ -23,7 +22,8 @@ class DreamColorApp < Sinatra::Base
   # landing page
   get '/' do
     # pass in all Dream Colors
-    @monitors = DreamColorMonitor.all 
+    @monitors = DreamColorMonitor.find(1) 
+    erb :index_2
   end
   
   not_found do
@@ -34,7 +34,7 @@ class DreamColorApp < Sinatra::Base
   
   get '/monitors/:tag' do
     # display individual tag
-    tag = DreamColorMonitor.find_by(tag: "abc123")
+    @tag = DreamColorMonitor.find_by(tag: "abc123")
   end
   
   get '/monitors/:tag/calibrations' do

@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>DC Calibrations</title>
+  </head>
+  <body>
+    <h1><%= @monitors.tag %></h1>
+
+    <!--<a href="/monitors/:tag" class="btn">Tag Calibrations</a>-->
+    
+    <form action='/monitors/:tag' method="GET">
+      <label for="calibrations">Tag Calibrations:</label>
+        <input id name="calibrations" name="calibrations"/> </b>
+      <input type="submit">Submit</input>
+
+
+  </body>
+</html>
+
+
+<!--http://surrealdetective.github.io/blog/2013/07/01/the-nested-ruby-params-hash-for-complex-html-forms-and-sinatra/-->

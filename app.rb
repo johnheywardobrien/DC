@@ -10,19 +10,18 @@ require 'rake'
 
 require './lib/models/dream_color_monitor'
 require './lib/models/calibration'
-require './lib/models/idea'
-
 
 
 class DreamColorApp < Sinatra::Base
 
   set :method_override, true
   
-  # this currently works
+  # index
   get '/' do
-    erb :index_2
+    erb :index
   end
   
+  # show page of all monitors
   get '/monitors' do
     # pass in all Dream Colors
     @monitors = DreamColorMonitor.all 
@@ -30,32 +29,24 @@ class DreamColorApp < Sinatra::Base
     erb :monitors
   end    
   
+  # error not found
   not_found do
     erb :error
   end
-  
-  # Monitors
-  
-  get '/monitors/:tag' do
-    # display individual tag
-    m = DreamColorMonitor.find_by(tag: params['tag'])
-    @tag = m.calibrations { |calibrations| puts calibrations}
-    
-    erb :monitor_tag
-  end
-  
-  
+
+
   # calibrations
   
+  # not working
   get '/monitors/:tag/calibrations' do
-    
-    erb params[:tag].to_sym
-    
-    erb :monitors_tag
+    @cal = Calibration.get(params[:dream_color_monitor_id])
+
+    erb :calibrations
   end
   
+  # this is definitely not finished!!!
   post 'monitors/:tag/calibrations' do
-    @monitor = DreamColorMonitor.find_by(params[:tag])
+    monitor = DreamColorMonitor.find_by(params[:tag])
     
     # create new calibration
     cal = Calibration.new
@@ -69,51 +60,3 @@ class DreamColorApp < Sinatra::Base
 end
 
 
-# class IdeaBoxApp < Sinatra::Base
-  
-#   set :method_override, true
-
-#   get '/' do
-#     erb :index, locals: {ideas: Idea.all}
-#   end
-
-#   # not_found do
-#   #   erb :error
-#   # end
-  
-#   post '/' do
-#     # 1: create an idea
-#     idea = Idea.new(params['idea_title'], params['idea_description'])    
-#     # 2: store it
-#     idea.save
-#     # 3: send us back to index to see all ideas
-#     redirect '/'
-#   end
-  
-#   delete '/:id' do |id|
-#     Idea.delete(id.to_i)
-#     redirect '/'
-#   end
-  
-#   get '/:id/edit' do |id|
-#     idea = Idea.find(id.to_i)
-#     erb :edit, locals: {id: id, idea: idea}
-#   end
-  
-#   put '/:id' do |id|
-#     data = {
-#       :title => params['idea_title'],
-#       :description => params['idea_description']
-#     }
-#     Idea.update(id.to_i, data)
-#     redirect '/'
-#   end
-  
-#   # Monitors
-  
-  
-#   # Calibrations
-  
-  
-  
-# end

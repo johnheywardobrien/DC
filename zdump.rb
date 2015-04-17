@@ -47,18 +47,20 @@
 
 # |||||||| Original routes from Old IdeaBoxApp
 
+# require './lib/models/idea'
+
+
 # class IdeaBoxApp < Sinatra::Base
   
 #   set :method_override, true
 
 #   get '/' do
-#     # @dc_monitor = DCMonitor.find(2)
 #     erb :index, locals: {ideas: Idea.all}
 #   end
-  
-#   not_found do
-#     erb :error
-#   end
+
+#   # not_found do
+#   #   erb :error
+#   # end
   
 #   post '/' do
 #     # 1: create an idea

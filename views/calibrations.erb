@@ -1,0 +1,27 @@
+<h1>Calibrations</h1>
+
+<table style="width:100%">
+  <colgroup>
+    <col span="6" style="background-color:green">
+  </colgroup>
+  
+  <tr>
+    <th>Luminance</th>
+    <th>X Value</th> 
+    <th>Y Value</th>
+    <th>Attempts</th>
+    <th>Green</th>
+    <th>Date</th>
+  </tr>
+  
+  <% @calibrations.each do |calibration| %>
+    <tr align="center">
+      <td><%= calibration.luminance %></td>
+      <td><%= calibration.x_value %></td> 
+      <td><%= calibration.y_value %></td>
+      <td><%= calibration.attempts %></td>
+      <td><%= calibration.green %></td>
+      <td><%= calibration.date %></td>
+    </tr>
+  <% end %>
+</table>

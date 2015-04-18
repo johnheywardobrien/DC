@@ -1,1 +1,8 @@
-<h1><ul><% @monitors.each do |monitor| %><li><%= monitor.tag %></li><% end %></ul></h1>
+<h1>Monitors</h1>
+<ul>
+  <% @monitors.each do |monitor| %>
+    <li>
+      <a href="/monitors/<%= monitor.tag %>/calibrations"><%= monitor.tag %></a>
+    </li>
+  <% end %>
+</ul>

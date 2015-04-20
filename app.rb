@@ -36,28 +36,30 @@ class DreamColorApp < Sinatra::Base
 
 
   # filters in params to redirect to show page for a given monitors calibrations
-  get '/calibrations' do
-    p(params)
-    redirect "/monitors/#{params[:tag]}/calibrations"
-  end
+  # get '/calibrations' do
+  #   p(params)
+  #   redirect "/monitors/#{params[:tag]}/calibrations"
+  # end
   
     # show page of calibrations for specific monitor
   get '/monitors/:tag/calibrations' do
-    m = DreamColorMonitor.find_by_tag(params[:tag])
-    @calibrations = m.calibrations
+    # m = DreamColorMonitor.find_by_tag(params[:tag])
+    # @calibrations = m.calibrations
+    @tag = DreamColorMonitor.find_by_tag(params[:tag])
+    @calibrations = @tag.calibrations
  
     erb :calibrations
   end
   
   # redirect to add new calibration
-  get '/calibrations/new' do
-    p(params)
-    redirect "/monitors/#{params[:tag]}/calibrations/new"
-  end
+  # get '/calibrations/new' do
+  #   p(params)
+  #   redirect "/monitors/#{params[:tag]}/calibrations/new"
+  # end
   
   # add new calibration
-  get 'monitors/:tag/calibrations/new' do
-    @tag = DreamColorMonitor.get(params[:tag])
+  get '/monitors/:tag/calibrations/new' do
+    @tag = DreamColorMonitor.find_by_tag(params[:tag])
     
     
     erb :calibration_new
@@ -65,9 +67,9 @@ class DreamColorApp < Sinatra::Base
 
 
   # this is definitely not finished!!!
-  post 'monitors/:tag/calibrations' do
-    monitor = DreamColorMonitor.find_by(params[:tag])
-    
+  post '/monitors/:tag/calibrations' do
+    # monitor = DreamColorMonitor.find_by(params[:tag])
+    @tag = DreamColorMonitor.find_by(params[:tag])
     # create new calibration
     cal = Calibration.new
     # store that bad boy

@@ -16,15 +16,15 @@
   
   <% @calibrations.each do |calibration| %>
     <tr align="center">
-      <td><%= calibration.luminance %></td>
-      <td><%= calibration.x_value %></td> 
-      <td><%= calibration.y_value %></td>
-      <td><%= calibration.attempts %></td>
-      <td><%= calibration.green %></td>
-      <td><%= calibration.date %></td>
+      <td><%= @calibrations.luminance %></td>
+      <!--<td><%= calibration.x_value %></td> -->
+      <!--<td><%= calibration.y_value %></td>-->
+      <!--<td><%= calibration.attempts %></td>-->
+      <!--<td><%= calibration.green %></td>-->
+      <!--<td><%= calibration.date %></td>-->
     </tr>
   <% end %>
   
-<!--<a href="/monitors/<%= @tag %>/calibrations/new">Add Calibration</a>-->
-<p><a href="/calibrations/new" class="btn">All monitors</a></p>
+<a href="/monitors/<%= @tag.tag %>/calibrations/new">Add Calibration</a>
+
 </table>

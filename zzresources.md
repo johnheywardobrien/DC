@@ -12,8 +12,7 @@
   https://youtu.be/o0SzhgYntK8?t=39m38s
   https://www.youtube.com/watch?v=jDXsEzOHb2M
   
-  http://irc.lc/freenode/ruby
-    #dudedudeman
+  http://www.sinatrarb.com/intro.html#Browser%20Redirect
     
 # Quotes
   

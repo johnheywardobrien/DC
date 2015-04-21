@@ -41,45 +41,52 @@ class DreamColorApp < Sinatra::Base
     redirect "/monitors/#{params[:tag]}/calibrations"
   end
   
-    # show page of calibrations for specific monitor
+  # show page of calibrations for specific monitor
   get '/monitors/:tag/calibrations' do
     p(params)
-    # m = DreamColorMonitor.find_by_tag(params[:tag])
-    # @calibrations = m.calibrations
-    @tag = DreamColorMonitor.find_by_tag(params[:tag])
-    @calibrations = @tag.calibrations
+    @monitor = DreamColorMonitor.find_by_tag(params[:tag])
+    @calibrations = @monitor.calibrations
  
     erb :calibrations
   end
   
-  # redirect to add new calibration
-  # get '/calibrations/new' do
-  #   p(params)
-  #   redirect "/monitors/#{params[:tag]}/calibrations/new"
-  # end
-  
   # add new calibration
   get '/monitors/:tag/calibrations/new' do
-    @tag = DreamColorMonitor.find_by_tag(params[:tag])
+    @monitor = DreamColorMonitor.find_by_tag(params[:tag])
     
     
     erb :calibration_new
   end
 
 
-  # this is definitely not finished!!!
-  post '/monitors/:tag/calibrations' do
-    # monitor = DreamColorMonitor.find_by(params[:tag])
-    @tag = DreamColorMonitor.find_by(params[:tag])
+  # create and write new calibration to database
+  post '/monitors/:tag/calibrations/new' do
+    # set instance variables
+    @monitor = DreamColorMonitor.find_by_tag(params[:tag])
+    @calibrations = @monitor.calibrations
     # create new calibration
     cal = Calibration.new
+    cal.dream_color_monitor_id = @monitor.id
+    cal.luminance = params[:lum_val]
+    cal.x_value = params[:x_val]
+    cal.y_value = params[:y_val]
+    cal.attempts = params[:cal_attempts]
+    cal.green = params[:green]
+    cal.date = params[:date]
+    p(params)
     # store that bad boy
     cal.save
     # send us back to see all calibrations for :tag
-    redirect '/monitors/:tag/calibrations'
+    redirect "/monitors/#{params[:tag]}/calibrations"
   end
     
-
+  # create a new monitor  
+  get '/monitors/new' do
+    
+    erb :monitor_new
+  end
+  
+  
 end
 
 

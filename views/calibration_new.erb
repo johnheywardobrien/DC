@@ -1,0 +1,11 @@
+  <form method='POST' action="/monitors/<%= @monitor.tag %>/calibrations/new">
+    <h3>Input New Calibration:</h3>
+      <input type='text' name='lum_val' placeholder="Luminance"/>
+      <input type='text' name='x_val' placeholder="X Value"/>
+      <input type='text' name='y_val' placeholder="Y Value"/>
+      <input type='text' name='cal_attempts' placeholder="Attempts"/>
+      <input type='text' name='green' placeholder="Green" />
+      <input type='text' name='date' placeholder="Date"/><br/>
+      <br/>
+      <input type='submit'/>
+  </form>

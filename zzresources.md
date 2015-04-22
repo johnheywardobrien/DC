@@ -27,3 +27,7 @@
   
   F the magic
     - kredding
+    
+# Tips
+  
+  When dealing with time zones, always use time.zones.now, not just time.now

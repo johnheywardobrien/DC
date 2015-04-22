@@ -6,6 +6,7 @@ require 'sqlite3'
 require 'sinatra/activerecord'
 require 'active_record'
 require 'rake'
+require 'time'
 
 
 require './lib/models/dream_color_monitor'
@@ -84,6 +85,16 @@ class DreamColorApp < Sinatra::Base
   get '/monitors/new' do
     
     erb :monitor_new
+  end
+  
+  post '/monitors/new' do
+    # create new monitor in database
+    mon = DreamColorMonitor.new
+    mon.tag = params[:tag_new]
+    # save that bad boy
+    mon.save
+    # send us to list of all monitors
+    redirect '/monitors'
   end
   
   

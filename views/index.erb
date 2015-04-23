@@ -7,8 +7,8 @@
     <p><a href="/monitors" class="btn">All monitors</a></p>
     
     <form method="GET" action="/calibrations" >
-      <label for="calibrations">Enter Tag Number:</label>
-      <input name="tag"/> 
+      <label for="calibrations">Search Tag Number:</label>
+      <input name="tag" pattern=".{6}" title="Please enter 6 digit tag number"> 
       <input type="submit" value="Submit" />  
     </form>
     

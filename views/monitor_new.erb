@@ -2,6 +2,6 @@
 
   <form method="POST" action="/monitors/new" >
     <label for="monitors_new">Enter New Tag Number:</label>
-    <input name="tag_new"/> 
+    <input name="tag_new" patter=".{6}" title="6 digits only" /> 
     <input type="submit" value="Submit" />  
   </form>

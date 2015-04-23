@@ -31,3 +31,5 @@
 # Tips
   
   When dealing with time zones, always use time.zones.now, not just time.now
+  Don't write tests that models are trying to validate
+  Don't write tests on other people's libraries 

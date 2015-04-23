@@ -7,6 +7,7 @@ require 'sinatra/activerecord'
 require 'active_record'
 require 'rake'
 require 'time'
+require 'date'
 
 
 require './lib/models/dream_color_monitor'
@@ -54,7 +55,6 @@ class DreamColorApp < Sinatra::Base
   # add new calibration
   get '/monitors/:tag/calibrations/new' do
     @monitor = DreamColorMonitor.find_by_tag(params[:tag])
-    
     
     erb :calibration_new
   end

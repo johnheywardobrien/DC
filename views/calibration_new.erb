@@ -1,3 +1,23 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+</head>
+<body>
+ 
+<p>Date: <input type="text" id="datepicker"></p>
+ 
+ 
+
   <form method='POST' action="/monitors/<%= @monitor.tag %>/calibrations/new">
     <h3>Input New Calibration:</h3>
       <input type='text' name='lum_val' placeholder="Luminance"/>
@@ -6,6 +26,10 @@
       <input type='text' name='cal_attempts' placeholder="Attempts"/>
       <input type='text' name='green' placeholder="Green" />
       <input type='text' name='date' placeholder="Date"/><br/>
+      <input type="text" id="datepicker" placeholder="Enter Date here"/>
       <br/>
       <input type='submit'/>
   </form>
+
+</body>
+</html>

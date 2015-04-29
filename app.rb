@@ -8,15 +8,21 @@ require 'active_record'
 require 'rake'
 require 'time'
 require 'date'
+# require 'rack-flash'
+require 'sinatra/flash'
 
 
 require './lib/models/dream_color_monitor'
 require './lib/models/calibration'
 
+# enable :sessions
+
+
 
 class DreamColorApp < Sinatra::Base
-
   set :method_override, true
+  enable :sessions
+  register Sinatra::Flash
   
   # index
   get '/' do
@@ -94,7 +100,11 @@ class DreamColorApp < Sinatra::Base
     # save that bad boy
     mon.save
     # send us to list of all monitors
+    flash.now[:notice] = "Thanks for signing up!"
+    flash[:notice] = "You have created a new DreamColor"
+
     redirect '/monitors'
+
   end
   
   

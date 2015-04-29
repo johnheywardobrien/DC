@@ -7,4 +7,5 @@ gem 'shotgun'
 gem 'activerecord'
 gem 'sqlite3'
 gem 'sinatra-activerecord'
-
+# gem 'rack-flash3'
+gem 'sinatra-flash'

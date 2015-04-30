@@ -44,8 +44,15 @@ class DreamColorApp < Sinatra::Base
 
   # filters in params to redirect to show page for a given monitors calibrations
   get '/calibrations' do
-    p(params)
-    redirect "/monitors/#{params[:tag]}/calibrations"
+    if DreamColorMonitor.exists?(:tag => params[:tag])
+      redirect "/monitors/#{params[:tag]}/calibrations"
+    end
+    if params[:tag].empty?
+      flash[:index_error] = "Please provide a valid tag number"
+      redirect '/'
+    else
+      redirect "/monitors/#{params[:tag]}/calibrations"
+    end
   end
   
   # show page of calibrations for specific monitor

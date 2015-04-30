@@ -15,7 +15,6 @@ require 'sinatra/flash'
 require './lib/models/dream_color_monitor'
 require './lib/models/calibration'
 
-# enable :sessions
 
 
 
@@ -99,12 +98,14 @@ class DreamColorApp < Sinatra::Base
     mon.tag = params[:tag_new]
     # save that bad boy
     mon.save
-    # send us to list of all monitors
-    flash.now[:notice] = "Thanks for signing up!"
-    flash[:notice] = "You have created a new DreamColor"
-
-    redirect '/monitors'
-
+    if mon.tag.empty?
+      flash[:failure] = "Please enter a tag number"
+      redirect '/monitors/new'
+    else
+      # send us to list of all monitors
+      flash[:success] = "You have created a new DreamColor"
+      redirect '/monitors'
+    end
   end
   
   

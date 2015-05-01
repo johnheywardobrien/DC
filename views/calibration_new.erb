@@ -20,11 +20,12 @@
 
   <form method='POST' action="/monitors/<%= @monitor.tag %>/calibrations/new">
     <h3>Input New Calibration:</h3>
-      <input type='text' name='lum_val' placeholder="Luminance"/>
-      <input type='text' name='x_val' placeholder="X Value"/>
-      <input type='text' name='y_val' placeholder="Y Value"/>
-      <input type='text' name='cal_attempts' placeholder="Attempts"/>
-      <input type='text' name='green' placeholder="Green" />
+     <!--Why do I not need the / / on my regex here?-->
+      <input type='text' name='lum_val' pattern="\b\d{2}\.\d{2}\b" placeholder="Luminance"/>
+      <input type='text' name='x_val' pattern="\A\.\d{4}\z" placeholder="X Value"/>
+      <input type='text' name='y_val' pattern="\A\.\d{4}\z" placeholder="Y Value"/>
+      <input type='text' name='cal_attempts' pattern="\d{1,2}(?!\d)|100" placeholder="Attempts"/>
+      <input type='text' name='green' pattern="(yes|no)" placeholder="Green" />
       <input type='text' name='date' placeholder="Date"/><br/>
       <input type="text" id="datepicker" placeholder="Enter Date here"/>
       <br/>

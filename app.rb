@@ -46,8 +46,14 @@ class DreamColorApp < Sinatra::Base
   get '/calibrations' do
     if DreamColorMonitor.exists?(:tag => params[:tag])
       redirect "/monitors/#{params[:tag]}/calibrations"
+    else
+      flash[:no_tag] = "That tag does not exist. Would you like to add it?"
+      redirect '/'
     end
     if params[:tag].empty?
+      flash[:index_error] = "Please provide a valid tag number"
+      redirect '/'
+    elsif params[:tag].nil?
       flash[:index_error] = "Please provide a valid tag number"
       redirect '/'
     else
@@ -57,7 +63,6 @@ class DreamColorApp < Sinatra::Base
   
   # show page of calibrations for specific monitor
   get '/monitors/:tag/calibrations' do
-    p(params)
     @monitor = DreamColorMonitor.find_by_tag(params[:tag])
     @calibrations = @monitor.calibrations
  

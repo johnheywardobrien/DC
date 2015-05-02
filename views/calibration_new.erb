@@ -14,21 +14,17 @@
 </head>
 <body>
  
-<p>Date: <input type="text" id="datepicker"></p>
  
  
 
   <form method='POST' action="/monitors/<%= @monitor.tag %>/calibrations/new">
     <h3>Input New Calibration:</h3>
-     <!--Why do I not need the / / on my regex here?-->
-      <input type='text' name='lum_val' pattern="\b\d{2}\.\d{2}\b" placeholder="Luminance"/>
-      <input type='text' name='x_val' pattern="^\.\d{4}" placeholder="X Value"/>
-      <input type='text' name='y_val' pattern="^\.\d{4}" placeholder="Y Value"/>
-      <input type='text' name='cal_attempts' pattern="\d{1,2}(?!\d)|100" placeholder="Attempts"/>
+      <input type='text' name='lum_val' pattern="\b\d{2}\.\d{2}\b" placeholder="Luminance" />
+      <input type='text' name='x_val' pattern="^\.\d{4}" placeholder="X Value" />
+      <input type='text' name='y_val' pattern="^\.\d{4}" placeholder="Y Value" />
+      <input type='text' name='cal_attempts' pattern="\d{1,2}(?!\d)|100" placeholder="Attempts" />
       <input type='text' name='green' pattern="(yes|no)" placeholder="Green" />
-      <input type='text' name='date' placeholder="Date"/><br/>
-      <input type="text" id="datepicker" placeholder="Enter Date here"/>
-      <br/>
+      <input type="text" name="date" id="datepicker" placeholder="Date" />
       <input type='submit'/>
   </form>
 

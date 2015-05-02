@@ -8,11 +8,12 @@
     
     <form method="GET" action="/calibrations" >
       <label for="calibrations">Search Tag Number:</label>
-      <input name="tag" pattern=".{6}" title="Please enter 6 digit tag number"> 
+      <input name="tag" pattern=".\d{5}" title="Please enter 6 digit tag number"> 
       <input type="submit" value="Submit" />  
     </form>
     
     <p><%= flash[:index_error] %></p>
+    <p><%= flash[:no_tag] %></p>
       
   </body>
 </html>

@@ -8,7 +8,6 @@ require 'active_record'
 require 'rake'
 require 'time'
 require 'date'
-# require 'rack-flash'
 require 'sinatra/flash'
 
 

@@ -27,19 +27,17 @@ class DreamColorApp < Sinatra::Base
     erb :index
   end
   
-  # show page of all monitors
-  get '/monitors' do
-    # pass in all Dream Colors
-    @monitors = DreamColorMonitor.all 
-    
-    erb :monitors
-  end    
-  
   # error not found
   not_found do
     erb :error
   end
-
+  
+  # show page of all monitors
+  get '/monitors' do
+    @monitors = DreamColorMonitor.all 
+    
+    erb :monitors
+  end    
 
   # filters in params to redirect to show page for a given monitors calibrations
   get '/calibrations' do
@@ -68,7 +66,7 @@ class DreamColorApp < Sinatra::Base
     erb :calibrations
   end
   
-  # add new calibration
+  # retrieve new calibration page
   get '/monitors/:tag/calibrations/new' do
     @monitor = DreamColorMonitor.find_by_tag(params[:tag])
     
@@ -76,12 +74,11 @@ class DreamColorApp < Sinatra::Base
   end
 
 
-  # create and write new calibration to database
+  # create and write new calibration 
   post '/monitors/:tag/calibrations/new' do
-    # set instance variables
     @monitor = DreamColorMonitor.find_by_tag(params[:tag])
     @calibrations = @monitor.calibrations
-    # create new calibration
+
     cal = Calibration.new
     cal.dream_color_monitor_id = @monitor.id
     cal.luminance = params[:lum_val]
@@ -90,30 +87,28 @@ class DreamColorApp < Sinatra::Base
     cal.attempts = params[:cal_attempts]
     cal.green = params[:green]
     cal.date = params[:date]
-    p(params)
-    # store that bad boy
+    
     cal.save
-    # send us back to see all calibrations for :tag
+    
     redirect "/monitors/#{params[:tag]}/calibrations"
   end
     
-  # create a new monitor  
+  # retrieve new monitor page
   get '/monitors/new' do
     
     erb :monitor_new
   end
   
+  # create and write new monitor
   post '/monitors/new' do
-    # create new monitor in database
     mon = DreamColorMonitor.new
     mon.tag = params[:tag_new]
-    # save that bad boy
+    
     mon.save
     if mon.tag.empty?
       flash[:failure] = "Please enter a tag number"
       redirect '/monitors/new'
     else
-      # send us to list of all monitors
       flash[:success] = "You have created a new DreamColor"
       redirect '/monitors'
     end

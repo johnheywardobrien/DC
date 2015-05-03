@@ -5,6 +5,6 @@ class Calibration < ActiveRecord::Base
   validates :x_value, format: { with: /\A\.\d{4}\z/, message: "Please type valid input for X Value" }            
   validates :y_value, format: { with: /\A\.\d{4}\z/, message: "Please type valid input for Y Value" }            
   validates :attempts, inclusion: { in: 1..100, message: "Please enter a number from 0-100" }
-  # validates :green, format: { with: /(yes|no)/, message: "Please only type yes or no" }
-  # validates :luminance, :x_value, :y_value, :attempts, :green, :date, presence: true
+  validates :green, inclusion: { in: [true, false] }
+  validates :date, presence: true
 end

@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 20150413212103) do
     t.string   "luminance"
     t.string   "x_value"
     t.string   "y_value"
-    t.string   "attempts"
-    t.string   "green"
-    t.string   "date"
+    t.integer  "attempts"
+    t.boolean  "green"
+    t.datetime "date"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

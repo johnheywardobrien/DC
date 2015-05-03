@@ -5,9 +5,9 @@ class CreateCalibrations < ActiveRecord::Migration
       t.string :luminance
       t.string :x_value
       t.string :y_value
-      t.string :attempts
-      t.string :green
-      t.string :date
+      t.integer :attempts
+      t.boolean :green
+      t.datetime :date
  
       t.timestamps null: false
     end

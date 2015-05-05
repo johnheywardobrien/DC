@@ -16,17 +16,20 @@
     
 # Quotes
   
-  controllers move data to a view and can pass data to a model
+  "Controllers move data to a view and can pass data to a model."
     - ccohoon
     
-  a model is a noun not a verb, it is a thing not an action
+  "A model is a noun not a verb, it is a thing not an action."
     - weaksauce
   
-  $global @@class_var @instance_var local_var_or_method
+  "$global @@class_var @instance_var local_var_or_method"
     - jhass
   
-  F the magic
+  "F the magic"
     - kredding
+    
+  "There is more than one way to spank a monkey."
+    - shevy
     
 # Tips
   

@@ -12,8 +12,20 @@
       <input type="submit" value="Submit" />  
     </form>
     
-    <p><%= flash[:index_error] %></p>
-    <p><%= flash[:no_tag] %></p>
+    <div class="container">
+
+      <% if flash[:index_error] %>
+        <%= flash[:index_error] %>
+      <% end %>
+      <% if flash[:no_tag] %>
+        <%= flash[:no_tag] %><a href="/monitors/new">Add Monitor</a>
+      <% end %>
+
+    </div><!-- /.container -->
+    
+    
+    
+
       
   </body>
 </html>

@@ -9,6 +9,7 @@ require 'rake'
 require 'time'
 require 'date'
 require 'sinatra/flash'
+# require 'sinatra/redirect_with_flash'
 
 
 require './lib/models/dream_color_monitor'
@@ -43,16 +44,15 @@ class DreamColorApp < Sinatra::Base
   get '/calibrations' do
     if DreamColorMonitor.exists?(:tag => params[:tag])
       redirect "/monitors/#{params[:tag]}/calibrations"
-    else
+    elsif params[:tag].blank?
+      flash[:index_error] = "Please provide a valid tag number"
+      redirect '/'
+    elsif
       flash[:no_tag] = "That tag does not exist. Would you like to add it?"
       redirect '/'
-    end
-    if params[:tag].empty?
-      flash[:index_error] = "Please provide a valid tag number"
-      redirect '/'
-    elsif params[:tag].nil?
-      flash[:index_error] = "Please provide a valid tag number"
-      redirect '/'
+    # elsif params[:tag].nil?
+    #   flash[:index_error] = "Please provide a valid tag number"
+    #   redirect '/'
     else
       redirect "/monitors/#{params[:tag]}/calibrations"
     end

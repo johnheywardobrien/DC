@@ -25,7 +25,7 @@ class DreamColorApp < Sinatra::Base
   
   # index
   get '/' do
-    erb :index
+    erb :index, :layout => :layout
   end
   
   # error not found

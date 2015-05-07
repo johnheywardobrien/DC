@@ -14,7 +14,7 @@ require 'sinatra/flash'
 
 require './lib/models/dream_color_monitor'
 require './lib/models/calibration'
-
+require './lib/models/footer'
 
 
 

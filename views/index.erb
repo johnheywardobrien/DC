@@ -3,7 +3,11 @@
     <title>DC Calibrations</title>
   </head>
   <body>
-
+    
+    <script src="./public/js/welcome" type="text/javascript">
+      document.write('<h3>' + greeting + '</h3>')
+    </script>
+    
     <p><a href="/monitors" class="btn">All monitors</a></p>
     
     <form method="GET" action="/calibrations" >
@@ -18,7 +22,7 @@
         <%= flash[:index_error] %>
       <% end %>
       <% if flash[:no_tag] %>
-        <%= flash[:no_tag] %><a href="/monitors/new">Add Monitor</a>
+        <%= flash[:no_tag] %> <a href="/monitors/new">Add Monitor</a>
       <% end %>
 
     </div>

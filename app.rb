@@ -14,7 +14,7 @@ require 'sinatra/flash'
 
 require './lib/models/dream_color_monitor'
 require './lib/models/calibration'
-require './lib/models/footer'
+
 
 
 
@@ -79,16 +79,23 @@ class DreamColorApp < Sinatra::Base
     @monitor = DreamColorMonitor.find_by_tag(params[:tag])
     @calibrations = @monitor.calibrations
 
-    cal = Calibration.new
-    cal.dream_color_monitor_id = @monitor.id
-    cal.luminance = params[:lum_val]
-    cal.x_value = params[:x_val]
-    cal.y_value = params[:y_val]
-    cal.attempts = params[:cal_attempts]
-    cal.green = params[:green]
-    cal.date = params[:date]
+    @cal = Calibration.new
+    @cal.dream_color_monitor_id = @monitor.id
+    @cal.luminance = params[:lum_val]
+    @cal.x_value = params[:x_val]
+    @cal.y_value = params[:y_val]
+    @cal.attempts = params[:cal_attempts]
+    @cal.green = params[:green]
+    @cal.date = params[:date]
     
-    cal.save
+    @cal.save
+    
+    if @cal.valid?
+      redirect "/monitors/#{params[:tag]}/calibrations"
+    else
+      @errors = @cal.errors.messages
+      erb :monitor_new, locals: {cal: @cal}
+    end
     
     redirect "/monitors/#{params[:tag]}/calibrations"
   end

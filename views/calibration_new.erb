@@ -34,9 +34,19 @@
 
   </form>
   
-    <div class="container error">
-      <%= error_msgs unless error_msgs.empty? %>
-    </div>
+ 
+  <div>
+    
+    <ul>
+      <p>ERROR</p>
+      <% @error_msgs.each do |errors| %>
+      <li>
+        <%= errors %>
+      </li>
+      <% end %>
+    </ul>
+  </div> 
+    
 
 
 

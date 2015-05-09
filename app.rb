@@ -25,6 +25,7 @@ class DreamColorApp < Sinatra::Base
   
   # index
   get '/' do
+    
     erb :index, :layout => :layout
   end
   
@@ -49,10 +50,7 @@ class DreamColorApp < Sinatra::Base
       redirect '/'
     elsif
       flash[:no_tag] = "That tag does not exist. Would you like to add it?"
-      redirect '/'
-    # elsif params[:tag].nil?
-    #   flash[:index_error] = "Please provide a valid tag number"
-    #   redirect '/'
+      redirect "/?tag=#{params[:tag]}"
     else
       redirect "/monitors/#{params[:tag]}/calibrations"
     end
@@ -69,8 +67,9 @@ class DreamColorApp < Sinatra::Base
   # retrieve new calibration page
   get '/monitors/:tag/calibrations/new' do
     @monitor = DreamColorMonitor.find_by_tag(params[:tag])
+    @error_msgs = []
     
-    erb :calibration_new
+    erb :calibration_new, :locals => { :error_msgs => @error_msgs }
   end
 
 
@@ -89,15 +88,20 @@ class DreamColorApp < Sinatra::Base
     @cal.date = params[:date]
     
     @cal.save
+    # redirect "/monitors/#{params[:tag]}/calibrations"
     
     if @cal.valid?
       redirect "/monitors/#{params[:tag]}/calibrations"
     else
-      @errors = @cal.errors.messages
-      erb :monitor_new, locals: {cal: @cal}
+      @error_msgs = @cal.errors.messages.inject([]) do |msgs, (field, field_errors)|
+        msgs << "#{field}: #{field_errors.join(', ')}"
+        msgs
+      end
+      
+      # pass above params to locals
+      erb :calibration_new, :locals => { :error_msgs => @error_msgs }
     end
-    
-    redirect "/monitors/#{params[:tag]}/calibrations"
+
   end
     
   # retrieve new monitor page

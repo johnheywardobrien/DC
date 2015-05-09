@@ -20,20 +20,10 @@
         <%= flash[:index_error] %>
       <% end %>
       <% if flash[:no_tag] %>
-        <%= flash[:no_tag] %> <a href="/monitors/new">Add Monitor</a>
+        <%= flash[:no_tag] %> <a href="/monitors/new?tag=<%= params[:tag] %>">Add Monitor</a>
       <% end %>
     </div>
     
-    <%= cal %>  
-    <div class="container error">
-      <% cal.errors.messages.each do |key, values| %>
-        <% values.each do |value| %>
-      <ul>
-        <li><%= "#{key} #{value}" %></li>
-      </ul>
-        <% end %>
-      <% end %>
-    </div>
 
     
     </br>

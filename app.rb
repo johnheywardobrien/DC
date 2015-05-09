@@ -40,6 +40,27 @@ class DreamColorApp < Sinatra::Base
     
     erb :monitors
   end    
+  
+  # retrieve new monitor page
+  get '/monitors/new' do
+    
+    erb :monitor_new
+  end
+  
+  # create and write new monitor
+  post '/monitors/new' do
+    mon = DreamColorMonitor.new
+    mon.tag = params[:tag_new]
+    
+    mon.save
+    if mon.tag.empty?
+      flash[:failure] = "Please enter a tag number"
+      redirect '/monitors/new'
+    else
+      flash[:success] = "You have created a new DreamColor"
+      redirect '/monitors'
+    end
+  end
 
   # filters in params to redirect to show page for a given monitors calibrations
   get '/calibrations' do
@@ -49,7 +70,7 @@ class DreamColorApp < Sinatra::Base
       flash[:index_error] = "Please provide a valid tag number"
       redirect '/'
     elsif
-      flash[:no_tag] = "That tag does not exist. Would you like to add it?"
+      flash[:no_tag] = "Tag ##{params[:tag]} does not exist. Would you like to add it?"
       redirect "/?tag=#{params[:tag]}"
     else
       redirect "/monitors/#{params[:tag]}/calibrations"
@@ -67,7 +88,16 @@ class DreamColorApp < Sinatra::Base
   # retrieve new calibration page
   get '/monitors/:tag/calibrations/new' do
     @monitor = DreamColorMonitor.find_by_tag(params[:tag])
+    @cal = Calibration.new
     @error_msgs = []
+    # @cal.luminance = params[:lum_val]
+    # @cal.x_value = params[:x_val]
+    # @cal.y_value = params[:y_val]
+    # @cal.attempts = params[:cal_attempts]
+    # @cal.green = params[:green]
+    # @cal.date = params[:date]
+    
+    
     
     erb :calibration_new, :locals => { :error_msgs => @error_msgs }
   end
@@ -99,31 +129,12 @@ class DreamColorApp < Sinatra::Base
       end
       
       # pass above params to locals
-      erb :calibration_new, :locals => { :error_msgs => @error_msgs }
+      erb :calibration_new, :locals => { :error_msgs => @error_msgs  }
     end
 
   end
     
-  # retrieve new monitor page
-  get '/monitors/new' do
-    
-    erb :monitor_new
-  end
   
-  # create and write new monitor
-  post '/monitors/new' do
-    mon = DreamColorMonitor.new
-    mon.tag = params[:tag_new]
-    
-    mon.save
-    if mon.tag.empty?
-      flash[:failure] = "Please enter a tag number"
-      redirect '/monitors/new'
-    else
-      flash[:success] = "You have created a new DreamColor"
-      redirect '/monitors'
-    end
-  end
   
   
 end

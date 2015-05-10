@@ -90,14 +90,7 @@ class DreamColorApp < Sinatra::Base
     @monitor = DreamColorMonitor.find_by_tag(params[:tag])
     @cal = Calibration.new
     @error_msgs = []
-    # @cal.luminance = params[:lum_val]
-    # @cal.x_value = params[:x_val]
-    # @cal.y_value = params[:y_val]
-    # @cal.attempts = params[:cal_attempts]
-    # @cal.green = params[:green]
-    # @cal.date = params[:date]
-    
-    
+    # @this = "ERROR"
     
     erb :calibration_new, :locals => { :error_msgs => @error_msgs }
   end
@@ -118,8 +111,7 @@ class DreamColorApp < Sinatra::Base
     @cal.date = params[:date]
     
     @cal.save
-    # redirect "/monitors/#{params[:tag]}/calibrations"
-    
+
     if @cal.valid?
       redirect "/monitors/#{params[:tag]}/calibrations"
     else

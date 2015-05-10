@@ -36,15 +36,16 @@
   
  
   <div>
-    
-    <ul>
-      <p>ERROR</p>
-      <% @error_msgs.each do |errors| %>
-      <li>
-        <%= errors %>
-      </li>
-      <% end %>
-    </ul>
+    <% if @error_msgs %>
+
+      <ul>
+        <% @error_msgs.each do |errors| %>
+          <li>
+            <%= errors %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
   </div> 
     
 

@@ -17,7 +17,7 @@ require 'pg'
 require './lib/models/dream_color_monitor'
 require './lib/models/calibration'
 
-db = URI.parse('postgres://user:pass@localhost/dreamcolors')
+db = URI.parse('postgres://thmaqxvjdcuseh:skz6ZHdkjoVwMb9phNuDOm_E6s@ec2-50-19-233-111.compute-1.amazonaws.com:5432/dbif8qqqtkpv7l')
 
 ActiveRecord::Base.establish_connection(
   :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,

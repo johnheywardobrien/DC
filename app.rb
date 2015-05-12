@@ -36,7 +36,7 @@ ActiveRecord::Base.establish_connection(
   :encoding => 'utf8'
 )
 
-#UGH
+#UGH UGH
 
 
 

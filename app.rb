@@ -9,12 +9,24 @@ require 'rake'
 require 'time'
 require 'date'
 require 'sinatra/flash'
+require 'json'
+require 'pg'
 # require 'sinatra/redirect_with_flash'
 
 
 require './lib/models/dream_color_monitor'
 require './lib/models/calibration'
 
+db = URI.parse('postgres://user:pass@localhost/dreamcolors')
+
+ActiveRecord::Base.establish_connection(
+  :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+  :host     => db.host,
+  :username => db.user,
+  :password => db.password,
+  :database => db.path[1..-1],
+  :encoding => 'utf8'
+)
 
 
 
@@ -114,10 +126,10 @@ class DreamColorApp < Sinatra::Base
 
     if @cal.valid?
       redirect "/monitors/#{params[:tag]}/calibrations"
-    else
-      @error_msgs = @cal.errors.messages.inject([]) do |msgs, (field, field_errors)|
-        msgs << "#{field}: #{field_errors.join(', ')}"
-        msgs
+      else
+        @error_msgs = @cal.errors.messages.inject([]) do |msgs, (field, field_errors)|
+          msgs << "#{field}: #{field_errors.join(', ')}"
+          msgs
       end
       
       # pass above params to locals

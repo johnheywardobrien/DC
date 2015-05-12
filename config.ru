@@ -5,6 +5,7 @@ require 'sqlite3'
 require 'sinatra/activerecord'
 require 'active_record'
 require 'rake'
+require 'pg'
 
 
 require './app'

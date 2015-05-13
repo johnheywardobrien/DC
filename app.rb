@@ -115,6 +115,7 @@ class DreamColorApp < Sinatra::Base
     # @this = "ERROR"
     
     erb :calibration_new, :locals => { :error_msgs => @error_msgs }
+    
   end
 
 
@@ -145,7 +146,7 @@ class DreamColorApp < Sinatra::Base
       end
       
       # pass above params to locals
-      erb :calibration_new, :locals => { :error_msgs => @error_msgs  }
+      erb :calibration_new, :layout => :layout, :locals => { :error_msgs => @error_msgs  }
     end
 
   end

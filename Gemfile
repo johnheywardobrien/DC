@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
+ruby "2.1.5"
 
 gem 'rake'
 gem 'sinatra', require: 'sinatra/base'
 gem 'shotgun'
+gem 'puma'
 
 gem 'activerecord'
 

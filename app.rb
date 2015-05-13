@@ -1,6 +1,10 @@
 require 'bundler'
 Bundler.require
 
+
+
+environment = ENV['RACK_ENV']
+
 if ENV['RACK_ENV'] == 'production'
   require 'pg'
 else

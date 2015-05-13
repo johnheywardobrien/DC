@@ -7,7 +7,7 @@ class CreateCalibrations < ActiveRecord::Migration
       t.string :y_value
       t.integer :attempts
       t.boolean :green
-      t.datetime :date
+      t.date :date
  
       t.timestamps null: false
     end

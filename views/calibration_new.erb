@@ -1,55 +1,31 @@
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>jQuery UI Datepicker - Default functionality</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script>
-  $(function() {
-    $( "#datepicker" ).datepicker();
-  });
-  </script>
-</head>
-<body>
- 
- 
- 
-
-  <form method='POST' action="/monitors/<%= @monitor.tag %>/calibrations/new">
-    <h3>Input New Calibration:</h3>
-      <input type='text' name='lum_val' pattern="\b\d{2,3}\.\d{2}\b" placeholder="Luminance" value="<%= params[:lum_val] %>" />
-      <input type='text' name='x_val' pattern="^\.\d{4}" placeholder="X Value" value="<%= params[:x_val] %>" />
-      <input type='text' name='y_val' pattern="^\.\d{4}" placeholder="Y Value" value="<%= params[:y_val] %>" />
-      <input type='text' name='cal_attempts' pattern="\d{1,2}(?!\d)|100" placeholder="Attempts" value="<%= params[:cal_attempts] %>" />
-      <input type="text" name="date" id="datepicker" placeholder="Date"  value="<%= params[:date] %>"/>
-      <label for="select">Green</label>
-      <select name="green" >
-        <option value="false">No</option>
-        <option value="true">Yes</option>
-      </select>
-      
-      <input type='submit'/>
-
-  </form>
-  
- 
-  <div>
-    <% if @error_msgs %>
-
-      <ul>
-        <% @error_msgs.each do |errors| %>
-          <li>
-            <%= errors %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-  </div> 
+<form method='POST' action="/monitors/<%= @monitor.tag %>/calibrations/new">
+  <h3>Input New Calibration:</h3>
+    <input type='text' name='lum_val' pattern="\b\d{2,3}\.\d{2}\b" placeholder="Luminance" value="<%= params[:lum_val] %>" />
+    <input type='text' name='x_val' pattern="^\.\d{4}" placeholder="X Value" value="<%= params[:x_val] %>" />
+    <input type='text' name='y_val' pattern="^\.\d{4}" placeholder="Y Value" value="<%= params[:y_val] %>" />
+    <input type='text' name='cal_attempts' pattern="\d{1,2}(?!\d)|100" placeholder="Attempts" value="<%= params[:cal_attempts] %>" />
+    <input type="text" name="date" id="datepicker" placeholder="Date"  value="<%= params[:date] %>"/>
+    <label for="select">Green</label>
+    <select name="green" >
+      <option value="false">No</option>
+      <option value="true">Yes</option>
+    </select>
     
+    <input type='submit'/>
+
+</form>
 
 
+<div>
+  <% if @error_msgs %>
 
-</body>
-</html>
+    <ul>
+      <% @error_msgs.each do |errors| %>
+        <li>
+          <%= errors %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div> 
+    

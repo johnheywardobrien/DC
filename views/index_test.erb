@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>DC Calibrations</title>
+  </head>
+  <body>
+    
+    <script src="welcome.js" type="text/javascript"></script>
+
+    <p><a href="/monitors" class="btn">All monitors</a></p>
+    
+    <form method="GET" action="/calibrations" >
+      <label for="calibrations">Search Tag Number:</label>
+      <input name="tag" pattern=".\d{5}" title="Please enter 6 digit tag number"> 
+      <input type="submit" value="Submit" />  
+    </form>
+    
+    <div class="container">
+
+      <% if flash[:index_error] %>
+        <%= flash[:index_error] %>
+      <% end %>
+      <% if flash[:no_tag] %>
+        <%= flash[:no_tag] %> <a href="/monitors/new?tag=<%= params[:tag] %>">Add Monitor</a>
+      <% end %>
+    </div>
+    
+
+    
+    </br>
+    </br>
+    </br>
+    
+    <a class="twitter-timeline" href="https://twitter.com/HP" data-widget-id="596693797368561665">Tweets by @HP</a>
+    <script src="tweet.js" type="text/javascript"></script>
+      
+  </body>
+</html>
+
+
+
+

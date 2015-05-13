@@ -1,9 +1,11 @@
-<h1>New Monitor</h1>
+<h3>New Monitor</h3>
 
-  <form method="POST" action="/monitors/new" >
-    <label for="monitors_new">Enter New Tag Number:</label>
-    <input name="tag_new" pattern=".{6}" title="6 digits only" value="<%= params[:tag] %>"/> 
-    <input type="submit" value="Submit" />  
-  </form>
-  
-  <p><%= flash[:failure] %></p>
+<form method="POST" action="/monitors/new" >
+  <label for="monitors_new">Enter New Tag Number:</label>
+  <input name="tag_new" pattern=".{6}" title="6 digits only" value="<%= params[:tag] %>"/> 
+  <input type="submit" value="Submit" />  
+</form>
+
+<p><%= flash[:failure] %></p>
+
+

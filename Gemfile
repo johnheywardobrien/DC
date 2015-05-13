@@ -12,6 +12,7 @@ gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'sinatra-flash'
 gem 'humanize_boolean'
+gem 'chronic' 
 
 group :development do
   gem 'sqlite3'

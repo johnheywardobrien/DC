@@ -7,4 +7,8 @@ class Calibration < ActiveRecord::Base
   validates :attempts, inclusion: { in: 1..100, message: "Please enter a number from 0-100" }
   validates :green, inclusion: { in: [true, false] }
   validates :date, presence: true
+  
+  def date=(d)
+    write_attribute(:date, Chronic.parse(d) || d)
+  end
 end

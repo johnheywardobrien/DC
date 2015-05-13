@@ -10,6 +10,8 @@ class CreateCalibrations < ActiveRecord::Migration
       t.datetime :date
  
       t.timestamps null: false
+      
+
     end
   end
 end

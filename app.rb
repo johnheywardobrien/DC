@@ -17,6 +17,7 @@ require 'time'
 require 'date'
 require 'sinatra/flash'
 require 'json'
+require 'chronic'
 
 require './lib/models/dream_color_monitor'
 require './lib/models/calibration'
@@ -132,6 +133,8 @@ class DreamColorApp < Sinatra::Base
     @cal.date = params[:date]
     
     @cal.save
+    
+    p @cal
 
     if @cal.valid?
       redirect "/monitors/#{params[:tag]}/calibrations"

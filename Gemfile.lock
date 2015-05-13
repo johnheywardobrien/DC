@@ -18,6 +18,7 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.0)
     builder (3.2.2)
+    chronic (0.10.2)
     dotenv (2.0.1)
     humanize_boolean (0.0.1)
       i18n
@@ -54,6 +55,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   activerecord-postgresql-adapter
+  chronic
   dotenv
   humanize_boolean
   pg

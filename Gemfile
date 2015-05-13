@@ -5,6 +5,7 @@ gem 'rake'
 gem 'sinatra', require: 'sinatra/base'
 gem 'shotgun'
 gem 'puma'
+gem 'dotenv'
 
 gem 'activerecord'
 

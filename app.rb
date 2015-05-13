@@ -1,9 +1,8 @@
 require 'bundler'
 Bundler.require
 
-
-
-environment = ENV['RACK_ENV']
+require 'dotenv'
+Dotenv.load
 
 if ENV['RACK_ENV'] == 'production'
   require 'pg'
@@ -19,10 +18,10 @@ require 'date'
 require 'sinatra/flash'
 require 'json'
 
-
 require './lib/models/dream_color_monitor'
 require './lib/models/calibration'
 
+puts ENV['DATABASE_URL']
 db = URI.parse(ENV['DATABASE_URL'])
 # db = URI.parse('postgres://thmaqxvjdcuseh:skz6ZHdkjoVwMb9phNuDOm_E6s@ec2-50-19-233-111.compute-1.amazonaws.com:5432/dbif8qqqtkpv7l')
 
@@ -43,6 +42,7 @@ class DreamColorApp < Sinatra::Base
   set :method_override, true
   enable :sessions
   register Sinatra::Flash
+  set :environment, :production
   
   # index
   get '/' do

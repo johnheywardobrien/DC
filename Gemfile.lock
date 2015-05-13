@@ -18,6 +18,7 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.0)
     builder (3.2.2)
+    dotenv (2.0.1)
     humanize_boolean (0.0.1)
       i18n
     i18n (0.7.0)
@@ -53,6 +54,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   activerecord-postgresql-adapter
+  dotenv
   humanize_boolean
   pg
   puma

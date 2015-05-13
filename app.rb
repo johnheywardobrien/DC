@@ -1,8 +1,12 @@
 require 'bundler'
 Bundler.require
 
+if ENV['RACK_ENV'] == 'production'
+  require 'pg'
+else
+  require 'sqlite3'
+end
 
-require 'sqlite3'
 require 'sinatra/activerecord'
 require 'active_record'
 require 'rake'
@@ -10,7 +14,6 @@ require 'time'
 require 'date'
 require 'sinatra/flash'
 require 'json'
-require 'pg'
 # require 'sinatra/redirect_with_flash'
 
 

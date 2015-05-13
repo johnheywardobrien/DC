@@ -14,7 +14,6 @@ require 'time'
 require 'date'
 require 'sinatra/flash'
 require 'json'
-# require 'sinatra/redirect_with_flash'
 
 
 require './lib/models/dream_color_monitor'

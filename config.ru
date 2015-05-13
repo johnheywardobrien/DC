@@ -1,11 +1,11 @@
 require 'bundler'
 Bundler.require
 
-require 'sqlite3'
+require 'sqlite3' if ENV['DEVELOPMENT']
 require 'sinatra/activerecord'
 require 'active_record'
 require 'rake'
-require 'pg'
+require 'pg' if ENV['PRODUCTION']
 
 
 require './app'

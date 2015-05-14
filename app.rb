@@ -40,10 +40,15 @@ ActiveRecord::Base.establish_connection(
 
 
 class DreamColorApp < Sinatra::Base
+  register Sinatra::Flash
   set :method_override, true
   enable :sessions
-  register Sinatra::Flash
+  set :sessions => true
   set :environment, :production
+  
+  use Rack::Auth::Basic, "Restricted Area" do |username, password|
+    [username, password] == ['calibrator', 'yomomma']  
+  end
   
   # index
   get '/' do

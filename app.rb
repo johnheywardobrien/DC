@@ -104,7 +104,7 @@ class DreamColorApp < Sinatra::Base
     @monitor = DreamColorMonitor.find_by_tag(params[:tag])
     @calibrations = @monitor.calibrations
  
-    erb :calibrations
+    erb :calibrations, :layout => :layout
   end
   
   # retrieve new calibration page
@@ -114,7 +114,7 @@ class DreamColorApp < Sinatra::Base
     @error_msgs = []
     # @this = "ERROR"
     
-    erb :calibration_new, :locals => { :error_msgs => @error_msgs }
+    erb :calibration_new, :layout => :layout, :locals => { :error_msgs => @error_msgs }
     
   end
 

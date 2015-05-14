@@ -47,7 +47,7 @@ class DreamColorApp < Sinatra::Base
   set :environment, :production
   
   use Rack::Auth::Basic, "Restricted Area" do |username, password|
-    [username, password] == ['calibrator', 'yomomma']  
+    [username, password] == ['calibrator', 'llama']  
   end
   
   # index

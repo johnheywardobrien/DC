@@ -18,6 +18,7 @@ require 'date'
 require 'sinatra/flash'
 require 'json'
 require 'chronic'
+require 'mail'
 
 require './lib/models/dream_color_monitor'
 require './lib/models/calibration'

@@ -6,6 +6,7 @@ gem 'sinatra', require: 'sinatra/base'
 gem 'shotgun'
 gem 'puma'
 gem 'dotenv'
+gem 'mail'
 
 gem 'activerecord'
 
@@ -13,6 +14,7 @@ gem 'sinatra-activerecord'
 gem 'sinatra-flash'
 gem 'humanize_boolean'
 gem 'chronic' 
+gem 'rack-test'
 
 group :development do
   gem 'sqlite3'

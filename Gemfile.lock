@@ -24,6 +24,9 @@ GEM
       i18n
     i18n (0.7.0)
     json (1.8.1)
+    mail (2.6.3)
+      mime-types (>= 1.16, < 3)
+    mime-types (2.5)
     minitest (5.5.1)
     pg (0.18.1)
     puma (2.11.2)
@@ -31,6 +34,8 @@ GEM
     rack (1.6.0)
     rack-protection (1.5.3)
       rack
+    rack-test (0.6.3)
+      rack (>= 1.0)
     rake (10.4.2)
     shotgun (0.9.1)
       rack (>= 1.0)
@@ -58,8 +63,10 @@ DEPENDENCIES
   chronic
   dotenv
   humanize_boolean
+  mail
   pg
   puma
+  rack-test
   rake
   shotgun
   sinatra

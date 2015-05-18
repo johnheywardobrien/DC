@@ -13,6 +13,6 @@ class TestApp < MiniTest::Test
   def test_DreamColorApp
     get '/'
     assert last_response.ok?
-    assert_equal "Reel FX", last_response.body
+    assert_equal last_response.body, "index"
   end
 end

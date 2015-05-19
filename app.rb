@@ -62,6 +62,14 @@ class DreamColorApp < Sinatra::Base
     erb :error
   end
   
+  # show page of metrics
+  get '/metrics' do
+    @last_five_cal = Calibration.limit(5)
+    @dc_green_yes = DreamColorMonitor.where(:green => 'true')
+    
+    erb :metrics
+  end
+  
   # show page of all monitors
   get '/monitors' do
     @monitors = DreamColorMonitor.all 
@@ -118,8 +126,7 @@ class DreamColorApp < Sinatra::Base
     @monitor = DreamColorMonitor.find_by_tag(params[:tag])
     @cal = Calibration.new
     @error_msgs = []
-    # @this = "ERROR"
-    
+
     erb :calibration_new, :layout => :layout, :locals => { :error_msgs => @error_msgs }
     
   end

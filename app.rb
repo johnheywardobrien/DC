@@ -10,6 +10,7 @@ else
   require 'sqlite3'
 end
 
+require 'sinatra/base'
 require 'sinatra/activerecord'
 require 'active_record'
 require 'rake'
@@ -19,13 +20,13 @@ require 'sinatra/flash'
 require 'json'
 require 'chronic'
 require 'mail'
+require 'assert'
 
 require './lib/models/dream_color_monitor'
 require './lib/models/calibration'
 
-puts ENV['DATABASE_URL']
+# puts ENV['DATABASE_URL']
 db = URI.parse(ENV['DATABASE_URL'])
-# db = URI.parse('postgres://thmaqxvjdcuseh:skz6ZHdkjoVwMb9phNuDOm_E6s@ec2-50-19-233-111.compute-1.amazonaws.com:5432/dbif8qqqtkpv7l')
 
 ActiveRecord::Base.establish_connection(
   :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
@@ -38,14 +39,21 @@ ActiveRecord::Base.establish_connection(
 
 #UGH UGH UGH
 
+  
 
 
 class DreamColorApp < Sinatra::Base
-  register Sinatra::Flash
-  set :method_override, true
-  enable :sessions
-  set :sessions => true
-  set :environment, :production
+  
+
+  configure do
+  
+    register Sinatra::Flash
+    set :method_override, true
+    enable :sessions
+    set :sessions => true
+    set :environment, :development
+  end
+
   
   use Rack::Auth::Basic, "Restricted Area" do |username, password|
     [username, password] == ['calibrator', 'llama']  
@@ -97,7 +105,7 @@ class DreamColorApp < Sinatra::Base
       redirect '/monitors'
     end
   end
-
+  
   # filters in params to redirect to show page for a given monitors calibrations
   get '/calibrations' do
     if DreamColorMonitor.exists?(:tag => params[:tag])
@@ -161,12 +169,7 @@ class DreamColorApp < Sinatra::Base
       # pass above params to locals
       erb :calibration_new, :layout => :layout, :locals => { :error_msgs => @error_msgs  }
     end
-
   end
-    
-  
-  
-  
 end
 
 

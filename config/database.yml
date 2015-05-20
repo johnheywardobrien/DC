@@ -1,4 +1,5 @@
 development:
+  default: &default
   adapter: postgresql
   encoding: unicode
   database: dcmonitors
@@ -6,3 +7,45 @@ development:
   pool: 5
   username: dcmonitor
   password: dcmonitor
+  
+test:
+  default: &default
+  adapter: sqlite3
+  encoding: unicode
+  database: db_dev_db.sqlite3
+  host: localhost
+  pool: 5
+  
+production:
+  default: &default
+  adapter: sqlite3
+  encoding: unicode
+  database: db_dev_db.sqlite3
+  host: localhost
+  pool: 5
+
+
+
+
+
+
+
+# development:
+#   adapter: sqlite3
+#   database: db/development.sqlite3
+#   pool: 5
+#   timeout: 5000
+
+# test:
+#   <<: *default
+#   database: "dcmonitors"
+
+# production:
+#   default: &default
+#   adapter: postgresql
+#   encoding: unicode
+#   database: dcmonitors
+#   host: "thmaqxvjdcuseh:skz6ZHdkjoVwMb9phNuDOm_E6s@ec2-50-19-233-111.compute-1.amazonaws.com:5432/dbif8qqqtkpv7l"
+#   pool: 5
+#   username: dcmonitor
+#   password: dcmonitor

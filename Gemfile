@@ -7,6 +7,8 @@ gem 'shotgun'
 gem 'puma'
 gem 'dotenv'
 gem 'mail'
+gem 'assert'
+gem 'assert-rack-test'
 
 gem 'activerecord'
 
@@ -16,7 +18,7 @@ gem 'humanize_boolean'
 gem 'chronic' 
 gem 'rack-test'
 
-group :development do
+group :development, :test do
   gem 'sqlite3'
 end
 
@@ -25,4 +27,3 @@ group :production do
   gem "activerecord-postgresql-adapter"
 end
 
-#

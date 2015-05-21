@@ -72,10 +72,17 @@ class DreamColorApp < Sinatra::Base
   
   # show page of metrics
   get '/metrics' do
-    @last_five_cal = Calibration.limit(5)
-    @dc_green_yes = DreamColorMonitor.where(:green => 'true')
+    @last_five_cal = Calibration.limit(5).count
+    @dc_green_yes = Calibration.where(:green => 'true').count
     
     erb :metrics
+  end
+  
+  # show page of all green monitors
+  get '/monitors/green' do
+    @green_monitors = Calibration.where(:green => 'true')
+    
+    erb :green
   end
   
   # show page of all monitors

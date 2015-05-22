@@ -55,7 +55,7 @@ class DreamColorApp < Sinatra::Base
   end
 
   
-  use Rack::Auth::Basic, "Restricted Area" do |username, password|
+  use Rack::Auth::Basic, "Are you the Calibrator Master?" do |username, password|
     [username, password] == ['calibrator', 'llama']  
   end
   
@@ -87,7 +87,7 @@ class DreamColorApp < Sinatra::Base
   
   # show page of all monitors
   get '/monitors' do
-    @monitors = DreamColorMonitor.all 
+    @monitors = DreamColorMonitor.order("created_at DESC")
     
     erb :monitors
   end    

@@ -37,3 +37,9 @@
   Don't write tests that models are trying to validate
   Don't write tests on other people's libraries
   Spell stuff right
+  
+# Tricks
+  
+  Because I messed up my git commits, there are some holes... 
+  This helps solve that:
+  git commit --date="`date --date='6 day ago'`" -am "Commit message here"

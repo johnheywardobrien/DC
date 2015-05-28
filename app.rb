@@ -74,7 +74,7 @@ class DreamColorApp < Sinatra::Base
   get '/metrics' do
     @last_five_cal = Calibration.limit(5).count
     @dc_green_yes = Calibration.where(:green => 'true').count
-    
+    @things = "this is a test" 
     erb :metrics
   end
   

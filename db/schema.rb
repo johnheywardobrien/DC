@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150413212103) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "calibrations", force: :cascade do |t|
     t.integer  "dream_color_monitor_id"
     t.string   "luminance"

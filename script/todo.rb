@@ -14,7 +14,7 @@ case command
 
   when 'new'
     new_task = ARGV.shift
-    file.open(TODO_FILE, 'a') do |file|
+    File.open(TODO_FILE, 'a') do |file|
       write_todo(file,new_task)
       puts "Task added."
     end
@@ -49,7 +49,7 @@ case command
           counter += 1
         end
       end
-    end
     'mv #{TODO_FILE}.new #{TODO_FILE}'
+    end
 end
   

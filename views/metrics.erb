@@ -1,3 +1,10 @@
 <h3>Metrics</h3>
 <p>There are <%= @dc_green_yes %> green monitors.</p>
-<p><%= @things %></p>
+<p>The following monitors are beyond their calibration range:</p>
+<ul>
+    <% @marked_for_cal.each do |marked| %>
+      <li>
+        <a href="/monitors/<%= marked %>/calibrations"><%= marked %></a>
+      </li>
+    <% end %>
+</ul>

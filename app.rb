@@ -75,6 +75,9 @@ class DreamColorApp < Sinatra::Base
     @last_five_cal = Calibration.limit(5).count
     @dc_green_yes = Calibration.where(:green => 'true').count
     @things = "this is a test" 
+    @cal = Calibration.all  
+    @marked_for_cal = @cal.joins(:dream_color_monitor).where(["calibrations.date < ?", 76.days.ago]).pluck("dream_color_monitors.tag") 
+  
     erb :metrics
   end
   

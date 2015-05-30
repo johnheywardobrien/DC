@@ -76,8 +76,14 @@ class DreamColorApp < Sinatra::Base
     @dc_green_yes = Calibration.where(:green => 'true').count
     @things = "this is a test" 
     @cal = Calibration.all  
-    @marked_for_cal = @cal.joins(:dream_color_monitor).where(["calibrations.date < ?", 76.days.ago]).pluck("dream_color_monitors.tag") 
-  
+    @marked_for_cal = @cal.joins(:dream_color_monitor)
+                          .where(["calibrations.date < ?", 76.days.ago])
+                          .pluck("dream_color_monitors.tag")
+                          
+    # need to figure out how to add conditional to limit searches to
+    # last record only. If the last record is less than 76 days, i don't 
+    # care about it
+    
     erb :metrics
   end
   

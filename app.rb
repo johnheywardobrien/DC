@@ -39,8 +39,7 @@ ActiveRecord::Base.establish_connection(
 
 #UGH UGH UGH
 
-  
-
+# Book.where(:published => true).find_each
 
 class DreamColorApp < Sinatra::Base
   
@@ -75,9 +74,9 @@ class DreamColorApp < Sinatra::Base
     @last_five_cal = Calibration.limit(5).count
     @dc_green_yes = Calibration.where(:green => 'true').count
     @things = "this is a test" 
-    @cal = Calibration.all  
+    @cal = Calibration.where(["calibrations.date < ?", 100.days.ago])
     @marked_for_cal = @cal.joins(:dream_color_monitor)
-                          .where(["calibrations.date < ?", 76.days.ago])
+                          .where(["calibrations.date < ?", 100.days.ago])
                           .pluck("dream_color_monitors.tag")
                           
     # need to figure out how to add conditional to limit searches to

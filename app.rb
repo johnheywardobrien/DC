@@ -1,15 +1,15 @@
 require 'bundler'
 Bundler.require
 
-require 'dotenv'
-Dotenv.load
+# require 'dotenv'
+# Dotenv.load
 
-if ENV['RACK_ENV'] == 'production'
-  require 'pg'
-else
-  require 'sqlite3'
-end
-
+# if ENV['RACK_ENV'] == 'production'
+#   require 'pg'
+# else
+#   require 'sqlite3'
+# end
+require 'sqlite3'
 require 'sinatra/base'
 require 'sinatra/activerecord'
 require 'active_record'
@@ -25,27 +25,27 @@ require 'assert'
 require './lib/models/dream_color_monitor'
 require './lib/models/calibration'
 
-# puts ENV['DATABASE_URL']
-db = URI.parse(ENV['DATABASE_URL'])
+# db = URI.parse(ENV['DATABASE_URL'])
 
-ActiveRecord::Base.establish_connection(
-  :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
-  :host     => db.host,
-  :username => db.user,
-  :password => db.password,
-  :database => db.path[1..-1],
-  :encoding => 'utf8'
-)
+# ActiveRecord::Base.establish_connection(
+#   :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+#   :host     => db.host,
+#   :username => db.user,
+#   :password => db.password,
+#   :database => db.path[1..-1],
+#   :encoding => 'utf8'
+# )
 
-#UGH UGH UGH
-
-# Book.where(:published => true).find_each
+# ActiveRecord::Base.establish_connection(
+#   "adapter" => "sqlite",
+#   "database"  => "db/db_dev_db.sqlite3"
+#   )
 
 class DreamColorApp < Sinatra::Base
   
 
   configure do
-  
+    set :database_file, "config/database.yml"
     register Sinatra::Flash
     set :method_override, true
     enable :sessions
@@ -56,6 +56,9 @@ class DreamColorApp < Sinatra::Base
   
   use Rack::Auth::Basic, "Are you the Calibrator Master?" do |username, password|
     [username, password] == ['calibrator', 'llama']  
+  end
+  
+  def test 
   end
   
   # index
@@ -74,7 +77,7 @@ class DreamColorApp < Sinatra::Base
     @last_five_cal = Calibration.limit(5).count
     @dc_green_yes = Calibration.where(:green => 'true').count
     @things = "this is a test" 
-    @cal = Calibration.where(["calibrations.date < ?", 100.days.ago])
+    @cal = Calibration.all
     @marked_for_cal = @cal.joins(:dream_color_monitor)
                           .where(["calibrations.date < ?", 100.days.ago])
                           .pluck("dream_color_monitors.tag")
@@ -188,3 +191,4 @@ class DreamColorApp < Sinatra::Base
 end
 
 
+    

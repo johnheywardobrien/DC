@@ -8,8 +8,6 @@ GEM
       activemodel (= 4.2.1)
       activesupport (= 4.2.1)
       arel (~> 6.0)
-    activerecord-postgresql-adapter (0.0.1)
-      pg
     activesupport (4.2.1)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
@@ -34,7 +32,6 @@ GEM
       mime-types (>= 1.16, < 3)
     mime-types (2.5)
     minitest (5.5.1)
-    pg (0.18.1)
     puma (2.11.2)
       rack (>= 1.1, < 2.0)
     rack (1.6.0)
@@ -65,14 +62,12 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
-  activerecord-postgresql-adapter
   assert
   assert-rack-test
   chronic
   dotenv
   humanize_boolean
   mail
-  pg
   puma
   rack-test
   rake

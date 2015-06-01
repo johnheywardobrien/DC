@@ -2,7 +2,7 @@
 App for logging of DreamColor calibrations
 
 # Notes
-- Version 1.2.0.1
+- Version 1.2.1
 - App is continually evolving
 - Features will be added and tracked via commit messages
 

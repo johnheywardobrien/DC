@@ -47,12 +47,12 @@ class DreamColorApp < Sinatra::Base
   
 
   configure do
-    set :database_file, "config/database.yml"
+    # set :database_file, "config/database.yml"
     register Sinatra::Flash
     set :method_override, true
     enable :sessions
     set :sessions => true
-    set :environment, :development
+    # set :environment, :production
   end
 
   
@@ -76,9 +76,7 @@ class DreamColorApp < Sinatra::Base
   
   # show page of metrics
   get '/metrics' do
-    @last_five_cal = Calibration.limit(5).count
     @dc_green_yes = Calibration.where(:green => 'true').count
-    @things = "this is a test" 
     @cal = Calibration.all
     @marked_for_cal = @cal.joins(:dream_color_monitor)
                           .where(["calibrations.date < ?", 100.days.ago])

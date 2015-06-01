@@ -25,6 +25,8 @@ require 'assert'
 require './lib/models/dream_color_monitor'
 require './lib/models/calibration'
 
+# UGH
+
 # db = URI.parse(ENV['DATABASE_URL'])
 
 # ActiveRecord::Base.establish_connection(

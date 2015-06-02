@@ -22,14 +22,9 @@ production:
   timeout: 5000
 
 
-##################################################################################
+###############################################################################
 
 # production:
-#   default: &default
-#   adapter: sqlite3
-#   database: db/db_dev_db.sqlite3
-#   pool: 5
-
 #   # default: &default
 #   # adapter: postgresql
 #   # encoding: unicode

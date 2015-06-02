@@ -1,6 +1,10 @@
 require 'bundler'
 Bundler.require
 
+
+# Uncomment the following lines if pushing to Heroku
+# Also, change database.yml to reflect PG usage 
+
 # require 'dotenv'
 # Dotenv.load
 
@@ -25,7 +29,6 @@ require 'assert'
 require './lib/models/dream_color_monitor'
 require './lib/models/calibration'
 
-# UGH
 
 # db = URI.parse(ENV['DATABASE_URL'])
 
@@ -38,10 +41,6 @@ require './lib/models/calibration'
 #   :encoding => 'utf8'
 # )
 
-# ActiveRecord::Base.establish_connection(
-#   "adapter" => "sqlite",
-#   "database"  => "db/db_dev_db.sqlite3"
-#   )
 
 class DreamColorApp < Sinatra::Base
   
@@ -51,8 +50,7 @@ class DreamColorApp < Sinatra::Base
     register Sinatra::Flash
     set :method_override, true
     enable :sessions
-    set :sessions => true
-    # set :environment, :production
+
   end
 
   
